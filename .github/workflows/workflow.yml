@@ -17,6 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      - uses: actions/checkout@v3
       - uses: actions/upload-artifact@v3
         with:
           name: my-artifact
@@ -26,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        index: [1,2,3]
+        index: [1,2,'hello']
     
     steps:
       - uses: actions/checkout@v3
