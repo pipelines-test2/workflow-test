@@ -1,5 +1,8 @@
 name: test-workflow
-on: push
+on: 
+  - push
+  - workflow_dispatch
+  - pull_request
 
 jobs:
   label:
