@@ -22,7 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Sleep for 5 minutes
-        run: sleep 3000s
+        run: sleep 3s
         shell: bash
       - uses: actions/upload-artifact@v3
         with:
@@ -41,7 +41,23 @@ jobs:
         with:
           node-version: 16
       - run: npm ci
-      - run: npm audit
+      # - run: npm audit
+
+  parralel-dependency:
+    needs: 
+      parallel-with-matrix
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        index: [1,2]
+    
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm ci
+      # - run: npm audit
 
   dependency-example:
     runs-on: ubuntu-latest
